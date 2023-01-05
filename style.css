@@ -17,10 +17,10 @@
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-auto-rows: 30px;
-    border-radius: 2.5vw;
-    width: 80vw;
+    border-radius: 0.5vw;
+    width: 90vw;
     height: 50vw;
-    max-width: 80vw;
+    max-width: 90vw;
     max-height: 50vw;
     background-color: white;
     overflow: hidden;
@@ -29,7 +29,7 @@
 
 .logo {
     grid-row-start: 1;
-    grid-row-end: 5;
+    grid-row-end: 6;
     grid-column-start: 1;
     grid-column-end: 4;
     margin-top: -5vh;
@@ -44,30 +44,33 @@
 }
 
 .textInfo {
-    padding-left: 4vw;
-    grid-row-start: 4;
+    grid-row-start: 5;
     grid-row-end: 10;
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 11;
     text-align: left;
     font-family: Helvetica, sans-serif;
-    color: #858585;
+    color: #5C6167;
+    padding-left: 5vw;
 }
 
 .name {
+    letter-spacing: 0.5vw;
     font-weight: bold;
-    font-size: 4.5vw;
+    font-size: 4vw;
 }
 
 .title {
-    font-weight: 400;
-    font-size: 3.2vw;
+    font-size: 2.75vw;
+    letter-spacing: 0.5vw;
+    font-weight: 100;
 }
 
 .contact {
     padding-top: 10px;
     font-weight: 100;
-    font-size: 3vw;
+    font-size: 2.5vw;
+    letter-spacing: 0.2vw;
 }
 
 .contact a {
@@ -75,38 +78,19 @@
     text-decoration: none;
 }
 
+.wings {
+    grid-row-start: 9;
+    grid-row-end: 11;
+    grid-column-start: 8;
+    grid-column-end: 11;
+    transform: rotate(-25deg);
+} 
+
+.wings img {
+    width: 30vw;
+    height: 15vw;
+}
+
 .iosCard {
     margin-top: 2vh;
 }
-
-.diagonal-box {
-    grid-row-start: 11;
-    grid-row-end: 16;
-    grid-column-start: 1;
-    grid-column-end: 11;
-    transform: skewY(-11deg);
-	background-image: linear-gradient(45deg, #E57200, #E57200, #A80267);
-    opacity: 0.9;
-} 
-.diagonal-box-2 {
-    grid-row-start: 10;
-    grid-row-end: 16;
-    grid-column-start: 1;
-    grid-column-end: 11;
-    transform: skewY(11deg);
-	background-image: linear-gradient(45deg, #A80267, #A80267, #E57200, #E57200);
-    opacity: 0.9;
-} 
-.content { 	
-	max-width: 500em;
-    margin: 0 auto; 
-}
-
-/* .diagonal-box {
-    grid-row-start: 8;
-    grid-row-end: 11;
-    grid-column-start: 1;
-    grid-column-end: 11;
-	background-color: #ff0099;
-	transform: skewY(-11deg);
-} */
