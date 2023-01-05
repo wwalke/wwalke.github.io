@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    background-color: rgb(234, 234, 234);
 }
 
 .container {
@@ -33,11 +34,13 @@
     grid-column-start: 1;
     grid-column-end: 4;
     padding-left: 5vw;
+    background-color: white;
 }
 
 .logo img{
     width: 17vw;
     object-fit: contain;
+    background-color: white;
 }
 
 .textInfo {
@@ -49,18 +52,21 @@
     font-family: Helvetica, sans-serif;
     color: #5C6167;
     padding-left: 5vw;
+    background-color: white;
 }
 
 .name {
     letter-spacing: 0.5vw;
     font-weight: bold;
     font-size: 4vw;
+    background-color: white;
 }
 
 .title {
     font-size: 2.75vw;
     letter-spacing: 0.5vw;
     font-weight: 100;
+    background-color: white;
 }
 
 .contact {
@@ -68,11 +74,13 @@
     font-weight: 100;
     font-size: 2.5vw;
     letter-spacing: 0.2vw;
+    background-color: white;
 }
 
 .contact a {
     color:inherit;
     text-decoration: none;
+    background-color: white;
 }
 
 .wings {
