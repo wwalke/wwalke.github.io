@@ -202,3 +202,34 @@
     background-color: #5C6167;
     color: white;
 }
+
+/* ── Buttons row ── */
+.buttons-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vw;
+    margin-top: 3vh;
+    background-color: transparent;
+}
+
+.buttons-row img,
+.buttons-row svg {
+    background-color: transparent;
+}
+
+.wallet-btn {
+    height: 62px;
+    width: auto;
+}
+
+.contacts-badge {
+    display: inline-block;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.contacts-badge:hover {
+    opacity: 0.8;
+}
