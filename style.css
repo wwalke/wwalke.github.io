@@ -169,3 +169,36 @@
 .iosCard {
     margin-top: 4vh;
 }
+
+/* ── Buttons row ── */
+.buttons-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vw;
+    margin-top: 3vh;
+    background-color: transparent;
+}
+
+.buttons-row img {
+    background-color: transparent;
+}
+
+.contacts-btn {
+    display: inline-block;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.5vw;
+    letter-spacing: 0.2vw;
+    color: #5C6167;
+    text-decoration: none;
+    border: 1px solid #5C6167;
+    padding: 0.8vw 1.5vw;
+    border-radius: 0.5vw;
+    background-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contacts-btn:hover {
+    background-color: #5C6167;
+    color: white;
+}

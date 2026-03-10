@@ -48,9 +48,12 @@
 
         <div class="flip-hint">tap card to flip ↺</div>
 
-        <div class="iosCard">
+        <div class="buttons-row">
             <a href="assets/wadewalke.pkpass" download>
-                <img src="assets/AddToWallet.svg" alt="">
+                <img src="assets/AddToWallet.svg" alt="Add to Wallet">
+            </a>
+            <a class="contacts-btn" href="assets/wadewalke.vcf" download="wadewalke.vcf">
+                + Add to Contacts
             </a>
         </div>
 
@@ -62,14 +65,12 @@
         var back    = document.getElementById('flipBack');
         var flipped = false;
 
-        // Initially hide back
         back.style.display = 'none';
 
         card.addEventListener('click', function () {
             flipped = !flipped;
 
             if (flipped) {
-                // Fade out front, fade in back
                 front.style.opacity = '0';
                 front.style.transform = 'rotateY(90deg)';
                 setTimeout(function () {
@@ -83,7 +84,6 @@
                     }, 20);
                 }, 300);
             } else {
-                // Fade out back, fade in front
                 back.style.opacity = '0';
                 back.style.transform = 'rotateY(90deg)';
                 setTimeout(function () {
