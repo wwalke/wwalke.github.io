@@ -13,7 +13,7 @@
         <div class="flip-container" id="flipCard">
 
             <!-- FRONT of card -->
-            <div class="card flip-front" id="flipFront">
+            <div class="card" id="flipFront">
                 <div class="logo">
                     <img src="assets/Logo.png" alt="">
                 </div>
@@ -22,7 +22,7 @@
                     <div class="title">SENIOR VICE PRESIDENT</div>
                     <div class="title">INVESTOR RELATIONS</div>
                     <div class="contact">
-                        <a href="/cdn-cgi/l/email-protection#037474626f686625203537386a6c6d6a702d606c6e">wwalke&#64;ionis.com</a>
+                        <a href="mailto:wwalke&#64;ionis.com">wwalke&#64;ionis.com</a>
                         <br>
                         <a href="tel:7604737035">M: (760) 473-7035</a>
                     </div>
@@ -32,8 +32,8 @@
                 </div>
             </div>
 
-            <!-- BACK of card (hidden by default) -->
-            <div class="card-back flip-back" id="flipBack">
+            <!-- BACK of card -->
+            <div class="card-back" id="flipBack">
                 <div class="back-content">
                     <img
                         class="qr-code"
@@ -49,24 +49,17 @@
         <div class="flip-hint">tap card to flip ↺</div>
 
         <div class="buttons-row">
-            <!-- Add to Wallet -->
             <a href="assets/wadewalke.pkpass" download>
                 <img src="assets/AddToWallet.svg" alt="Add to Wallet" class="wallet-btn">
             </a>
-
-            <!-- Add to Contacts — styled to match Wallet badge -->
             <a href="assets/wadewalke.vcf" download="wadewalke.vcf" class="contacts-badge" title="Add to Contacts">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 62" class="contacts-svg">
-                    <!-- Black rounded rectangle background -->
                     <rect width="200" height="62" rx="10" ry="10" fill="#000"/>
-                    <!-- Person/contact icon -->
                     <circle cx="34" cy="22" r="9" fill="white"/>
                     <path d="M16 50 Q16 36 34 36 Q52 36 52 50" fill="white"/>
-                    <!-- Plus circle -->
                     <circle cx="50" cy="14" r="8" fill="#34C759"/>
                     <line x1="50" y1="10" x2="50" y2="18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
                     <line x1="46" y1="14" x2="54" y2="14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-                    <!-- Text -->
                     <text x="68" y="27" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="white" opacity="0.75">Add to</text>
                     <text x="68" y="46" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="white">Contacts</text>
                 </svg>
@@ -75,38 +68,68 @@
 
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        var card    = document.getElementById('flipCard');
+    <script>
+    (function() {
         var front   = document.getElementById('flipFront');
         var back    = document.getElementById('flipBack');
+        var card    = document.getElementById('flipCard');
+        var hint    = document.querySelector('.flip-hint');
         var flipped = false;
+        var animating = false;
 
-        back.style.display = 'none';
+        // Set initial states via JS so CSS never fights us
+        front.style.cssText = 'opacity:1; display:grid;';
+        back.style.cssText  = 'opacity:0; display:none;';
 
-        card.addEventListener('click', function () {
-            flipped = !flipped;
+        function flipToBack() {
+            animating = true;
+            // Step 1: fade front out
+            front.style.transition = 'opacity 0.25s ease';
+            front.style.opacity = '0';
+            setTimeout(function() {
+                // Step 2: swap visibility
+                front.style.display = 'none';
+                back.style.display  = 'flex';
+                back.style.transition = 'none';
+                back.style.opacity  = '0';
+                // Step 3: force reflow then fade back in
+                back.getBoundingClientRect();
+                back.style.transition = 'opacity 0.25s ease';
+                back.style.opacity  = '1';
+                setTimeout(function() { animating = false; }, 300);
+            }, 280);
+        }
 
-            if (flipped) {
+        function flipToFront() {
+            animating = true;
+            back.style.transition = 'opacity 0.25s ease';
+            back.style.opacity = '0';
+            setTimeout(function() {
+                back.style.display  = 'none';
+                front.style.display = 'grid';
+                front.style.transition = 'none';
                 front.style.opacity = '0';
-                front.style.transform = 'rotateY(90deg)';
-                setTimeout(function () {
-                    front.style.display = 'none';
-                    back.style.display = 'flex';
-                    back.style.opacity = '0';
-                    back.style.transform = 'rotateY(-90deg)';
-                    setTimeout(function () {
-                        back.style.opacity = '1';
-                        back.style.transform = 'rotateY(0deg)';
-                    }, 20);
-                }, 300);
-            } else {
-                back.style.opacity = '0';
-                back.style.transform = 'rotateY(90deg)';
-                setTimeout(function () {
-                    back.style.display = 'none';
-                    front.style.display = 'grid';
-                    front.style.opacity = '0';
-                    front.style.transform = 'rotateY(-90deg)';
-                    setTimeout(function () {
-                        front.style.opacity = '1';
-                       
+                front.getBoundingClientRect();
+                front.style.transition = 'opacity 0.25s ease';
+                front.style.opacity = '1';
+                setTimeout(function() { animating = false; }, 300);
+            }, 280);
+        }
+
+        card.addEventListener('click', function(e) {
+            // Don't flip if clicking a link inside the card
+            if (e.target.closest('a')) return;
+            if (animating) return;
+            flipped = !flipped;
+            if (flipped) { flipToBack(); } else { flipToFront(); }
+        });
+
+        hint.addEventListener('click', function() {
+            if (animating) return;
+            flipped = !flipped;
+            if (flipped) { flipToBack(); } else { flipToFront(); }
+        });
+    })();
+    </script>
+</body>
+</html>
