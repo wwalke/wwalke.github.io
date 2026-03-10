@@ -21,6 +21,7 @@
     margin-top: 5vh;
     perspective: 1200px;
     cursor: pointer;
+    position: relative;
 }
 
 .flip-inner {
@@ -28,18 +29,18 @@
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
     background-color: transparent;
-}
-
-.flip-container.flipped .flip-inner {
-    transform: rotateY(180deg);
 }
 
 /* ── Shared card face styles ── */
 .flip-front,
 .flip-back {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
@@ -48,6 +49,7 @@
 
 .flip-back {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 /* ── Original card styles (front) ── */
@@ -137,10 +139,8 @@
     overflow: hidden;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5vw;
 }
 
 .back-content {
@@ -168,11 +168,10 @@
     background-color: white;
 }
 
-/* ── Flip hint label ── */
+/* ── Flip hint — sits below card, outside the 3D context ── */
 .flip-hint {
-    position: absolute;
-    bottom: 1.2vw;
-    right: 1.8vw;
+    text-align: center;
+    margin-top: 1vw;
     font-family: Helvetica, sans-serif;
     font-size: 1.2vw;
     color: #aaa;

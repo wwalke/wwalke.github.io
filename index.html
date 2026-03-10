@@ -10,11 +10,11 @@
 <body>
     <div class="container">
 
-        <div class="flip-container" onclick="this.classList.toggle('flipped')" title="Click to flip">
-            <div class="flip-inner">
+        <div class="flip-container" id="flipCard">
+            <div class="flip-inner" id="flipInner">
 
                 <!-- FRONT of card -->
-                <div class="card flip-front">
+                <div class="card flip-front" id="flipFront">
                     <div class="logo">
                         <img src="assets/Logo.png" alt="">
                     </div>
@@ -24,7 +24,6 @@
                         <div class="title">INVESTOR RELATIONS</div>
                         <div class="contact">
                             <a href="mailto:wwalke&#64;ionis.com">wwalke&#64;ionis.com</a>
-                            
                             <br>
                             <a href="tel:7604737035">M: (760) 473-7035</a>
                         </div>
@@ -32,11 +31,10 @@
                     <div class="wings">
                         <img src="assets/wings.jpg" alt="">
                     </div>
-                    <div class="flip-hint">tap to flip ↺</div>
                 </div>
 
                 <!-- BACK of card -->
-                <div class="flip-back card-back">
+                <div class="card-back flip-back" id="flipBack">
                     <div class="back-content">
                         <img
                             class="qr-code"
@@ -44,12 +42,43 @@
                             alt="QR code for wadewalke.com"
                         >
                         <p class="qr-label">wadewalke.com</p>
-                        <div class="flip-hint">tap to flip ↺</div>
                     </div>
                 </div>
 
             </div>
+            <div class="flip-hint">tap to flip ↺</div>
         </div>
 
         <div class="iosCard">
-            <a href="assets/wadewalke.pkpass
+            <a href="assets/wadewalke.pkpass" download>
+                <img src="assets/AddToWallet.svg" alt="">
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        var card    = document.getElementById('flipCard');
+        var inner   = document.getElementById('flipInner');
+        var front   = document.getElementById('flipFront');
+        var back    = document.getElementById('flipBack');
+        var flipped = false;
+
+        // Start with back hidden
+        back.style.visibility = 'hidden';
+
+        card.addEventListener('click', function () {
+            flipped = !flipped;
+            inner.style.transform = flipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+
+            if (flipped) {
+                setTimeout(function () { front.style.visibility = 'hidden'; }, 350);
+                setTimeout(function () { back.style.visibility  = 'visible'; }, 350);
+            } else {
+                setTimeout(function () { back.style.visibility  = 'hidden'; }, 350);
+                setTimeout(function () { front.style.visibility = 'visible'; }, 350);
+            }
+        });
+    </script>
+</body>
+</html>
