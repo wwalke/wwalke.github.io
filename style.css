@@ -14,17 +14,20 @@
 
 /* ── Flip wrapper ── */
 .flip-container {
+    position: relative;
     width: 90vw;
     height: 50vw;
     max-width: 90vw;
     max-height: 50vw;
     margin-top: 5vh;
     cursor: pointer;
-    position: relative;
 }
 
 /* ── Front of card ── */
 .card {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     display: grid;
@@ -108,6 +111,9 @@
 
 /* ── Back of card ── */
 .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border-radius: 0.5vw;
