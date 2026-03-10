@@ -11,43 +11,42 @@
     <div class="container">
 
         <div class="flip-container" id="flipCard">
-            <div class="flip-inner" id="flipInner">
 
-                <!-- FRONT of card -->
-                <div class="card flip-front" id="flipFront">
-                    <div class="logo">
-                        <img src="assets/Logo.png" alt="">
-                    </div>
-                    <div class="textInfo">
-                        <div class="name">D. WADE WALKE, Ph.D.</div>
-                        <div class="title">SENIOR VICE PRESIDENT</div>
-                        <div class="title">INVESTOR RELATIONS</div>
-                        <div class="contact">
-                            <a href="mailto:wwalke&#64;ionis.com">wwalke&#64;ionis.com</a>
-                            <br>
-                            <a href="tel:7604737035">M: (760) 473-7035</a>
-                        </div>
-                    </div>
-                    <div class="wings">
-                        <img src="assets/wings.jpg" alt="">
+            <!-- FRONT of card -->
+            <div class="card flip-front" id="flipFront">
+                <div class="logo">
+                    <img src="assets/Logo.png" alt="">
+                </div>
+                <div class="textInfo">
+                    <div class="name">D. WADE WALKE, Ph.D.</div>
+                    <div class="title">SENIOR VICE PRESIDENT</div>
+                    <div class="title">INVESTOR RELATIONS</div>
+                    <div class="contact">
+                        <a href="mailto:wwalke&#64;ionis.com">wwalke&#64;ionis.com</a>
+                        <br>
+                        <a href="tel:7604737035">M: (760) 473-7035</a>
                     </div>
                 </div>
-
-                <!-- BACK of card -->
-                <div class="card-back flip-back" id="flipBack">
-                    <div class="back-content">
-                        <img
-                            class="qr-code"
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wadewalke.com&color=5C6167&bgcolor=ffffff"
-                            alt="QR code for wadewalke.com"
-                        >
-                        <p class="qr-label">wadewalke.com</p>
-                    </div>
+                <div class="wings">
+                    <img src="assets/wings.jpg" alt="">
                 </div>
-
             </div>
-            <div class="flip-hint">tap to flip ↺</div>
+
+            <!-- BACK of card (hidden by default) -->
+            <div class="card-back flip-back" id="flipBack">
+                <div class="back-content">
+                    <img
+                        class="qr-code"
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wadewalke.com&color=5C6167&bgcolor=ffffff"
+                        alt="QR code for wadewalke.com"
+                    >
+                    <p class="qr-label">wadewalke.com</p>
+                </div>
+            </div>
+
         </div>
+
+        <div class="flip-hint">tap card to flip ↺</div>
 
         <div class="iosCard">
             <a href="assets/wadewalke.pkpass" download>
@@ -59,24 +58,44 @@
 
     <script>
         var card    = document.getElementById('flipCard');
-        var inner   = document.getElementById('flipInner');
         var front   = document.getElementById('flipFront');
         var back    = document.getElementById('flipBack');
         var flipped = false;
 
-        // Start with back hidden
-        back.style.visibility = 'hidden';
+        // Initially hide back
+        back.style.display = 'none';
 
         card.addEventListener('click', function () {
             flipped = !flipped;
-            inner.style.transform = flipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
 
             if (flipped) {
-                setTimeout(function () { front.style.visibility = 'hidden'; }, 350);
-                setTimeout(function () { back.style.visibility  = 'visible'; }, 350);
+                // Fade out front, fade in back
+                front.style.opacity = '0';
+                front.style.transform = 'rotateY(90deg)';
+                setTimeout(function () {
+                    front.style.display = 'none';
+                    back.style.display = 'flex';
+                    back.style.opacity = '0';
+                    back.style.transform = 'rotateY(-90deg)';
+                    setTimeout(function () {
+                        back.style.opacity = '1';
+                        back.style.transform = 'rotateY(0deg)';
+                    }, 20);
+                }, 300);
             } else {
-                setTimeout(function () { back.style.visibility  = 'hidden'; }, 350);
-                setTimeout(function () { front.style.visibility = 'visible'; }, 350);
+                // Fade out back, fade in front
+                back.style.opacity = '0';
+                back.style.transform = 'rotateY(90deg)';
+                setTimeout(function () {
+                    back.style.display = 'none';
+                    front.style.display = 'grid';
+                    front.style.opacity = '0';
+                    front.style.transform = 'rotateY(-90deg)';
+                    setTimeout(function () {
+                        front.style.opacity = '1';
+                        front.style.transform = 'rotateY(0deg)';
+                    }, 20);
+                }, 300);
             }
         });
     </script>
