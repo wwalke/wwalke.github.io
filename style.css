@@ -131,19 +131,25 @@
 }
 
 /* ── Back of card (QR) ── */
-.flip-back.card {
-    display: block;
-}
-
-.back-content {
-    width: 100%;
-    height: 100%;
+.card-back {
+    border-radius: 0.5vw;
     background-color: white;
+    overflow: hidden;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.5vw;
+}
+
+.back-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+    background-color: white;
 }
 
 .qr-code {
