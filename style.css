@@ -131,6 +131,10 @@
 }
 
 /* ── Back of card (QR) ── */
+.flip-back.card {
+    display: block;
+}
+
 .back-content {
     width: 100%;
     height: 100%;
