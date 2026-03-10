@@ -9,34 +9,47 @@
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            <div class="logo">
-                <img src="assets/Logo.png" alt="">
-            </div>
-    
-            <div class="textInfo">
-                <div class="name">
-                    D. WADE WALKE, Ph.D.
-                </div>
-                <div class="title">
-                    SENIOR VICE PRESIDENT
-                </div>
-                <div class="title">
-                    INVESTOR RELATIONS
-                </div>
-                
-                <div class="contact">
-                    <a href="mailto:wwalke@ionis.com">wwalke@ionis.com</a>
-                    <br>
-                    
-                    <a href="tel:7604737035">M: (760) 473-7035</a>
-                </div>
-            </div>
 
-            <div class="wings">
-                <img src="assets/wings.jpg" alt="">
+        <div class="flip-container" onclick="this.classList.toggle('flipped')" title="Click to flip">
+            <div class="flip-inner">
+
+                <!-- FRONT of card -->
+                <div class="card flip-front">
+                    <div class="logo">
+                        <img src="assets/Logo.png" alt="">
+                    </div>
+                    <div class="textInfo">
+                        <div class="name">D. WADE WALKE, Ph.D.</div>
+                        <div class="title">SENIOR VICE PRESIDENT</div>
+                        <div class="title">INVESTOR RELATIONS</div>
+                        <div class="contact">
+                            <a href="mailto:wwalke@ionis.com">wwalke@ionis.com</a>
+                            <br>
+                            <a href="tel:7604737035">M: (760) 473-7035</a>
+                        </div>
+                    </div>
+                    <div class="wings">
+                        <img src="assets/wings.jpg" alt="">
+                    </div>
+                    <div class="flip-hint">tap to flip ↺</div>
+                </div>
+
+                <!-- BACK of card -->
+                <div class="card flip-back">
+                    <div class="back-content">
+                        <img
+                            class="qr-code"
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wadewalke.com&color=5C6167&bgcolor=ffffff"
+                            alt="QR code for wadewalke.com"
+                        >
+                        <p class="qr-label">wadewalke.com</p>
+                        <div class="flip-hint">tap to flip ↺</div>
+                    </div>
+                </div>
+
             </div>
         </div>
+
         <div class="iosCard">
             <a href="assets/wadewalke.pkpass" download>
                 <img src="assets/AddToWallet.svg" alt="">

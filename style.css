@@ -12,20 +12,54 @@
     align-items: center;
 }
 
+/* ── Flip wrapper ── */
+.flip-container {
+    width: 90vw;
+    height: 50vw;
+    max-width: 90vw;
+    max-height: 50vw;
+    margin-top: 5vh;
+    perspective: 1200px;
+    cursor: pointer;
+}
+
+.flip-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    background-color: transparent;
+}
+
+.flip-container.flipped .flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* ── Shared card face styles ── */
+.flip-front,
+.flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+}
+
+/* ── Original card styles (front) ── */
 .card {
     display: grid;
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-auto-rows: 30px;
     border-radius: 0.5vw;
-    width: 90vw;
-    height: 50vw;
-    max-width: 90vw;
-    max-height: 50vw;
     background-color: white;
     overflow: hidden;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    margin-top: 5vh;
 }
 
 .logo {
@@ -37,7 +71,7 @@
     background-color: white;
 }
 
-.logo img{
+.logo img {
     width: 17vw;
     object-fit: contain;
     background-color: white;
@@ -78,7 +112,7 @@
 }
 
 .contact a {
-    color:inherit;
+    color: inherit;
     text-decoration: none;
     background-color: white;
 }
@@ -89,13 +123,55 @@
     grid-column-start: 8;
     grid-column-end: 11;
     transform: rotate(-25deg);
-} 
+}
 
 .wings img {
     width: 30vw;
     height: 15vw;
 }
 
+/* ── Back of card (QR) ── */
+.back-content {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+}
+
+.qr-code {
+    width: 20vw;
+    height: 20vw;
+    background-color: white;
+    border-radius: 0.5vw;
+}
+
+.qr-label {
+    font-family: Helvetica, sans-serif;
+    font-size: 2vw;
+    letter-spacing: 0.3vw;
+    color: #5C6167;
+    font-weight: 100;
+    background-color: white;
+}
+
+/* ── Flip hint label ── */
+.flip-hint {
+    position: absolute;
+    bottom: 1.2vw;
+    right: 1.8vw;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.2vw;
+    color: #aaa;
+    letter-spacing: 0.1vw;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+/* ── Add to Wallet button ── */
 .iosCard {
     margin-top: 4vh;
 }
