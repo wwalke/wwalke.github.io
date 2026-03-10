@@ -218,6 +218,12 @@
     background-color: transparent;
 }
 
+.contacts-svg {
+    height: 62px;
+    width: auto;
+    display: block;
+}
+
 .wallet-btn {
     height: 62px;
     width: auto;
